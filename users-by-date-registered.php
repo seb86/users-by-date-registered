@@ -3,12 +3,12 @@
  * Plugin Name: Users by Date Registered
  * Plugin URI: http://wordpress.org/plugins/users-by-date-registered
  * Description: Displays a new column displaying the date the user registered and allows you to filter the users by date.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Sebastien Dumont
  * Author URI: http://www.sebastiendumont.com
  * Author Email: mailme@sebastiendumont.com
  * Requires at least: 3.8
- * Tested up to: 4.0.0
+ * Tested up to: 4.0.1
  *
  * Text Domain: users-by-date
  * Domain Path: languages
@@ -93,11 +93,11 @@ function users_months_dropdown() {
 	if( !current_user_can( 'manage_options' ) )
 		return;
 
-	$months = $wpdb->get_results( $wpdb->prepare( "
+	$months = $wpdb->get_results( "
 		SELECT DISTINCT YEAR( user_registered ) AS year, MONTH( user_registered ) AS month
 		FROM $wpdb->users
 		ORDER BY user_registered DESC
-		" ) );
+		" );
 
 	/**
 	 * Filter the 'Months' drop-down results.

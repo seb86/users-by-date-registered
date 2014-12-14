@@ -1,12 +1,12 @@
 === Users by Date Registered ===
-Version: 1.0.0
+Version: 1.0.1
 Author URI: http://www.sebastiendumont.com
 Author: Sebastien Dumont
 Contributors: sebd86
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=mailme@sebastiendumont.com&currency_code=EUR&amount=&return=&item_name=Buy+me+a+coffee+for+Users+by+Date+Registered+Plugin
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=mailme@sebastiendumont.com&currency_code=EUR&amount=&return=&item_name=Buy+me+a+coffee+for+Users+by+Date+Registered+Plugin&page_style=paypal
 Tags: users, date, filter, admin, Sebastien Dumont
 Requires at least: 3.8
-Tested up to 4.0.0
+Tested up to 4.0.1
 Stable Tag: Trunk
 
 Displays a new column displaying the date the user registered and allows you to filter the users by date.
@@ -46,6 +46,10 @@ The manual installation method involves downloading the plugin and uploading it 
 * Activate the plugin from the Plugins menu within the WordPress admin.
 
 == Changelog ==
+
+= 1.0.1 - 14th December 2014 =
+
+* FIXED - Query issue by removing $wpdb->prepare
 
 = 1.0.0 - 16th August 2014 =
 
