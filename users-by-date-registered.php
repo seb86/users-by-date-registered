@@ -1,24 +1,21 @@
 <?php
 /**
  * Plugin Name: Users by Date Registered
- * Plugin URI: http://wordpress.org/plugins/users-by-date-registered
+ * Plugin URI: https://wordpress.org/plugins/users-by-date-registered
  * Description: Displays a new column displaying the date the user registered and allows you to filter the users by date.
- * Version: 1.0.1
- * Author: Sebastien Dumont
+ * Version: 1.0.2
+ * Author: Sébastien Dumont
  * Author URI: http://www.sebastiendumont.com
- * Author Email: mailme@sebastiendumont.com
- * Requires at least: 3.8
- * Tested up to: 4.0.1
+ * Requires at least: 4.5
+ * Tested up to: 4.7.3
  *
- * Text Domain: users-by-date
+ * Text Domain: users-by-date-registered
  * Domain Path: languages
- * Network: false
  *
- * Copyright: (c) 2014 Sebastien Dumont. (mailme@sebastiendumont.com)
+ * Copyright: (c) 2014-2017 Sébastien Dumont. (mailme@sebastiendumont.com)
  *
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
- *
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -29,14 +26,14 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @since 1.0.0
  */
 function add_user_table_columns( $column ) {
-  $column['registered'] = __( 'Date Registered', 'users-by-date' );
+  $column['registered'] = __( 'Date Registered', 'users-by-date-registered' );
 
   return $column;
 }
 add_filter( 'manage_users_columns', 'add_user_table_columns' );
 
 /**
- * Filters the users table columns to display the 
+ * Filters the users table columns to display the
  * date and time the users registered.
  *
  * @since 1.0.0
@@ -46,15 +43,15 @@ function modify_user_table_row( $val, $column_name, $user_id ) {
 
   switch( $column_name ) {
     case 'registered' :
-      $t_time = get_the_time( __( 'Y/m/d g:i:s A' ) );
-      $m_time = $user->user_registered;
-      $time = get_post_time( 'G', true, $user );
+      $t_time    = get_the_time( __( 'Y/m/d g:i:s A' ) );
+      $m_time    = $user->user_registered;
+      $time      = get_post_time( 'G', true, $user );
       $time_diff = time() - $time;
 
-      if( $time_diff > 0 && $time_diff < DAY_IN_SECONDS ) {
+      if ( $time_diff > 0 && $time_diff < DAY_IN_SECONDS ) {
         $h_time = sprintf( __( '%s ago' ), human_time_diff( $time ) );
       }
-      else{
+      else {
         $h_time = mysql2date( __( 'd/m/Y' ), $m_time );
       }
 
@@ -90,19 +87,17 @@ function users_months_dropdown() {
 	global $wpdb, $wp_locale;
 
 	// Bail if current user cannot manage options
-	if( !current_user_can( 'manage_options' ) )
+	if ( !current_user_can( 'manage_options' ) )
 		return;
 
 	$months = $wpdb->get_results( "
 		SELECT DISTINCT YEAR( user_registered ) AS year, MONTH( user_registered ) AS month
-		FROM $wpdb->users
-		ORDER BY user_registered DESC
-		" );
+		FROM $wpdb->users ORDER BY user_registered DESC" );
 
 	/**
 	 * Filter the 'Months' drop-down results.
 	 *
-	 * @param object $months    The months drop-down query results.
+	 * @param object $months The months drop-down query results.
 	 */
 	$months = apply_filters( 'users_months_dropdown_results', $months );
 
@@ -111,18 +106,23 @@ function users_months_dropdown() {
 	if ( !$month_count || ( 1 == $month_count && 0 == $months[0]->month ) )
 		return;
 
-	$m = isset( $_GET['userregistered'] ) ? (int) $_GET['userregistered'] : 0;
-	?> 
-	<label for="filter-users-by-date" class="screen-reader-text"><?php _e( 'Filter by date' ); ?></label>
-		<select name="userregistered" id="filter-users-by-date" style="display:inline-block; float:none;">
-			<option<?php selected( $m, 0 ); ?> value="0"><?php _e( 'All dates' ); ?></option>
+  if ( isset( $_GET[ 'userregistered' ]) ) {
+    $m = (int) $_GET[ 'userregistered' ];
+    $m = !empty( $m[ 0 ] ) ? $m[ 0 ] : $m[ 1 ];
+  } else {
+    $m = (int) 0;
+  }
+	?>
+	<label for="filter-users-by-date" class="screen-reader-text"><?php _e( 'Filter users by date', 'users-by-date-registered' ); ?></label>
+		<select name="userregistered[]" id="filter-users-by-date" style="display:inline-block; float:none;">
+			<option<?php selected( $m, "0" ); ?> value="0"><?php _e( 'All dates', 'users-by-date-registered' ); ?></option>
 			<?php
 			foreach ( $months as $arc_row ) {
 				if ( 0 == $arc_row->year )
 					continue;
 
 				$month = zeroise( $arc_row->month, 2 );
-				$year = $arc_row->year;
+				$year  = $arc_row->year;
 
 				printf( "<option %s value='%s'>%s</option>\n",
 					selected( $m, $year . $month, false ),
@@ -132,12 +132,11 @@ function users_months_dropdown() {
 				);
 			}
 			?>
-		</select> 
+		</select>
 <?php
-		submit_button( __( 'Filter Date' ), 'secondary', 'filter_date_action', false );
+		submit_button( __( 'Filter By Date', 'users-by-date-registered' ), 'secondary', 'filterdate', false );
 }
 add_action( 'restrict_manage_users', 'users_months_dropdown' );
-
 
 /**
  * This filters the users table by date.
@@ -145,49 +144,50 @@ add_action( 'restrict_manage_users', 'users_months_dropdown' );
  * @since 1.0.0
  */
 function extended_user_search( $user_query ){
-	global $wpdb;
+	global $pagenow, $wpdb;
 
-	if( isset( $_GET['userregistered'] ) && !empty( $_GET['userregistered'] ) ) {
-		$date = $_GET['userregistered'];
+  if ( is_admin() && 'users.php' == $pagenow && isset( $_GET[ 'userregistered' ] ) && is_array( $_GET[ 'userregistered' ] ) ) {
+    $date  = $_GET[ 'userregistered' ];
+    $date  = !empty( $date[ 0 ] ) ? $date[ 0 ] : $date[ 1 ];
 
-		$year = substr( $date, 0, -2 );
+		$year  = substr( $date, 0, -2 );
 		$month = substr( $date, -2, 5 );
 
 		switch( $month ) {
-			case 01:
+			case "01":
 				$last_day = 31;
 			break;
-			case 02:
+			case "02":
 				$last_day = apply_filters( 'users_by_date_month_feb_last_day', 28 );
 			break;
-			case 03:
+			case "03":
 				$last_day = 31;
 			break;
-			case 04:
+			case "04":
 				$last_day = 30;
 			break;
-			case 05:
+			case "05":
 				$last_day = 31;
 			break;
-			case 06:
+			case "06":
 				$last_day = 30;
 			break;
-			case 07:
+			case "07":
 				$last_day = 31;
 			break;
-			case 08:
+			case "08":
 				$last_day = 31;
 			break;
-			case 09:
+			case "09":
 				$last_day = 30;
 			break;
-			case 10:
+			case "10":
 				$last_day = 31;
 			break;
-			case 11:
+			case "11":
 				$last_day = 30;
 			break;
-			case 12:
+			case "12":
 				$last_day = 31;
 			break;
 		}
@@ -197,5 +197,3 @@ function extended_user_search( $user_query ){
 
 }
 add_action( 'pre_user_query', 'extended_user_search' );
-
-?>
