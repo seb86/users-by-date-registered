@@ -217,4 +217,4 @@ function sd_extended_user_search( $user_query ){
 	}
 
 } // END sd_extended_user_search()
-add_action( 'pre_user_query', 'extended_user_search' );
+add_action( 'pre_user_query', 'sd_extended_user_search' );
