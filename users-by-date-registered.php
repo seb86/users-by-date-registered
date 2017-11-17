@@ -167,7 +167,7 @@ function sd_extended_user_search( $user_query ){
 	if ( is_admin() && 'users.php' == $pagenow && isset( $_GET[ 'userregistered' ] ) && is_numeric( $_GET[ 'userregistered' ] ) ) {
 		$date = $_GET[ 'userregistered' ];
 
-		if ( empty( $date ){
+		if ( empty( $date ) ) {
 			return;
 		}
 
