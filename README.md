@@ -23,6 +23,7 @@ This simple plugin allows you to filter your users by date registered and a new 
 To use this plugin you will need:
 
 * WordPress v4.5+
+* PHP v5.6+
 
 #### 📝 Reporting Issues
 
@@ -49,7 +50,7 @@ Users by Date Registered is released under [GNU General Public License v3.0](htt
 
 ##### Credits
 
-Users by Date Registered for WordPress is developed and maintained by [Sébastien Dumont](https://sebastiendumont.com/about/).
+Users by Date Registered is developed and maintained by [Sébastien Dumont](https://sebastiendumont.com/about/).
 
 ---
 
