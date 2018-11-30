@@ -3,13 +3,13 @@
  * Plugin Name: Users by Date Registered
  * Plugin URI:  https://wordpress.org/plugins/users-by-date-registered
  * Description: Allows you to filter your users by date registered.
- * Version:     1.0.3
+ * Version:     1.0.4
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
  * Text Domain: users-by-date-registered
  * Domain Path: /languages/
  *
- * Copyright:   © 2017 Sébastien Dumont.
+ * Copyright:   © 2018 Sébastien Dumont.
  * License:     GNU General Public License v2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -36,18 +36,19 @@ add_filter( 'manage_users_columns', 'sd_add_user_table_columns' );
  * Filters the users table columns to display the
  * date and time the users registered.
  *
- * @since  1.0.0
- * @param  $val
- * @param  array  $column_name
- * @param  object $user_id
- * @return string
+ * @since   1.0.0
+ * @version 1.0.4
+ * @param   $val
+ * @param   array  $column_name
+ * @param   object $user_id
+ * @return  string
  */
 function sd_modify_user_table_row( $val, $column_name, $user_id ) {
 	$user = get_userdata( $user_id );
 
 	switch( $column_name ) {
 		case 'registered' :
-			$t_time    = get_the_time( __( 'Y/m/d g:i:s A' ) );
+			$t_time    = get_the_time( 'Y/m/d g:i:s A' );
 			$m_time    = $user->user_registered;
 			$time      = get_post_time( 'G', true, $user );
 			$time_diff = time() - $time;
@@ -56,7 +57,7 @@ function sd_modify_user_table_row( $val, $column_name, $user_id ) {
 				$h_time = sprintf( __( '%s ago', 'users-by-date-registered' ), human_time_diff( $time ) );
 			}
 			else {
-				$h_time = mysql2date( __( get_option( 'date_format' ) ), $m_time );
+				$h_time = mysql2date( get_option( 'date_format' ), $m_time );
 			}
 
 			return '<abbr title="' . $t_time . '">' . apply_filters( 'user_registered_date_column_time', $h_time, $user, $column_name ) . '</abbr>';
