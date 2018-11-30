@@ -2,6 +2,7 @@
 Contributors:      sebd86
 Donate link:       https://www.paypal.me/codebreaker
 Tags:              users, date, filter, admin
+Requires PHP:      5.6+
 Requires at least: 4.5
 Tested up to:      5.0.0
 Stable tag:        1.0.4
