@@ -1,11 +1,11 @@
 === Users by Date Registered ===
 Contributors:      sebd86
-Donate link:       https://www.paypal.me/codebreaker
-Tags:              users, date, filter, admin
-Requires PHP:      5.6+
+Donate link:       https://sebdumont.xyz/donate/
+Tags:              users, date, filter, admin, administration
+Requires PHP:      5.6
 Requires at least: 4.5
-Tested up to:      5.0.0
-Stable tag:        1.0.4
+Tested up to:      5.1
+Stable tag:        1.0.5
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,24 +41,27 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 == Changelog ==
 
+= v1.0.5 - 16th February 2019 = 
+* New: Ready for WordPress 5.1 release. 🎊
+
 = v1.0.4 - 30th November 2018 = 
-* CHECKED: Compatibility with WordPress 5.0
+* Checked: Compatibility with WordPress 5.0
 
 = v1.0.3 - 17th November 2017 =
-* ADDED     - A prefix to all functions to prevent compatibility issues with other filters or plugins.
-* CHANGED   - User filter now only shows at the top of the users table.
-* CHANGED   - mysql2date() now uses the site date format.
-* FIXED     - Users returning empty when "All Dates" is selected.
-* IMPROVED  - Inline documentation.
-* CORRECTED - Localized strings missing the text domain.
+* Added     - A prefix to all functions to prevent compatibility issues with other filters or plugins.
+* Changed   - User filter now only shows at the top of the users table.
+* Changed   - mysql2date() now uses the site date format.
+* Fixed     - Users returning empty when "All Dates" is selected.
+* Improved  - Inline documentation.
+* Corrected - Localized strings missing the text domain.
 
 = v1.0.2 - 17th March 2017 =
-* CORRECTED - Textdomain to match plugin slug.
-* FIXED - Compatibility with PHP 7.
-* FIXED - Filter button to identify if the table was filtered from the top or bottom of the table.
+* Corrected - Textdomain to match plugin slug.
+* Fixed - Compatibility with PHP 7.
+* Fixed - Filter button to identify if the table was filtered from the top or bottom of the table.
 
 = 1.0.1 - 14th December 2014 =
-* FIXED - Query issue by removing $wpdb->prepare
+* Fixed - Query issue by removing $wpdb->prepare
 
 = 1.0.0 - 16th August 2014 =
 * Initial release

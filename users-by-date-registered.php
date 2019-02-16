@@ -3,13 +3,13 @@
  * Plugin Name: Users by Date Registered
  * Plugin URI:  https://wordpress.org/plugins/users-by-date-registered
  * Description: Allows you to filter your users by date registered.
- * Version:     1.0.4
+ * Version:     1.0.5
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
  * Text Domain: users-by-date-registered
  * Domain Path: /languages/
  *
- * Copyright:   © 2018 Sébastien Dumont.
+ * Copyright:   © 2019 Sébastien Dumont.
  * License:     GNU General Public License v2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
