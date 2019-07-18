@@ -2,14 +2,14 @@
   "title": "Users by Date Registered",
   "name": "users-by-date-registered",
   "description": "Allows you to filter your registered users by the date they registered.",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": false,
   "contributors": [
     "sebd86"
   ],
   "author": "Sébastien Dumont",
   "author_uri": "https://sebastiendumont.com",
-  "homepage": "http://wordpress.org/plugins/users-by-date-registered/",
+  "homepage": "https://wordpress.org/plugins/users-by-date-registered/",
   "main": "Gruntfile.js",
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
   "bugs": "https://github.com/seb86/Users-by-Date-Registered/issues",
   "requires_php": "5.6",
   "requires": "4.5",
-  "tested_up_to": "5.1",
+  "tested_up_to": "5.2.2",
   "license": "GPL-2.0",
   "copyright": "Copyright (c) 2019, Sébastien Dumont",
   "dependencies": {},

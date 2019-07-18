@@ -4,8 +4,8 @@ Donate link:       https://sebdumont.xyz/donate/
 Tags:              users, date, filter, admin, administration
 Requires PHP:      5.6
 Requires at least: 4.5
-Tested up to:      5.1
-Stable tag:        1.0.5
+Tested up to:      5.2.2
+Stable tag:        1.0.6
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,13 +41,20 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 == Changelog ==
 
+= v1.0.6 - 18th July 2019 =
+
+* Fixed: `$val` is returned for default if column is not registered.
+
 = v1.0.5 - 16th February 2019 = 
+
 * New: Ready for WordPress 5.1 release. 🎊
 
 = v1.0.4 - 30th November 2018 = 
+
 * Checked: Compatibility with WordPress 5.0
 
 = v1.0.3 - 17th November 2017 =
+
 * Added     - A prefix to all functions to prevent compatibility issues with other filters or plugins.
 * Changed   - User filter now only shows at the top of the users table.
 * Changed   - mysql2date() now uses the site date format.
@@ -56,12 +63,15 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 * Corrected - Localized strings missing the text domain.
 
 = v1.0.2 - 17th March 2017 =
+
 * Corrected - Textdomain to match plugin slug.
 * Fixed - Compatibility with PHP 7.
 * Fixed - Filter button to identify if the table was filtered from the top or bottom of the table.
 
 = 1.0.1 - 14th December 2014 =
+
 * Fixed - Query issue by removing $wpdb->prepare
 
 = 1.0.0 - 16th August 2014 =
+
 * Initial release

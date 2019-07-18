@@ -3,7 +3,7 @@
  * Plugin Name: Users by Date Registered
  * Plugin URI:  https://wordpress.org/plugins/users-by-date-registered
  * Description: Allows you to filter your users by date registered.
- * Version:     1.0.5
+ * Version:     1.0.6
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
  * Text Domain: users-by-date-registered
@@ -37,7 +37,7 @@ add_filter( 'manage_users_columns', 'sd_add_user_table_columns' );
  * date and time the users registered.
  *
  * @since   1.0.0
- * @version 1.0.4
+ * @version 1.0.6
  * @param   $val
  * @param   array  $column_name
  * @param   object $user_id
