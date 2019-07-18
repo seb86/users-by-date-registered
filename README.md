@@ -11,8 +11,8 @@
 **Tags:** users, date, filter, admin, administration  
 **Requires PHP:** 5.6  
 **Requires at least:** 4.5  
-**Tested up to:** 5.1  
-**Stable tag:** 1.0.5  
+**Tested up to:** 5.2.2  
+**Stable tag:** 1.0.6  
 **License:** GPL v2 or later  
 
 ###### Follow me
