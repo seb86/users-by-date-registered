@@ -65,10 +65,9 @@ function sd_modify_user_table_row( $val, $column_name, $user_id ) {
 			break;
 
 		default:
+			return $val;
 			break;
 	}
-	
-	return $val;
 } // END sd_modify_user_table_row()
 add_filter( 'manage_users_custom_column', 'sd_modify_user_table_row', 10, 3 );
 
