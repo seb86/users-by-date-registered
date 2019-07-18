@@ -125,7 +125,6 @@ function sd_users_months_dropdown( $which ) {
 
 	if ( isset( $_GET[ 'userregistered' ]) ) {
 		$m = $_GET[ 'userregistered' ];
-		//$m = !empty( $m[ 0 ] ) ? $m[ 0 ] : $m[ 1 ];
 	}
 	else {
 		$m = (int) 0;
