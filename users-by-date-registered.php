@@ -77,10 +77,10 @@ add_filter( 'manage_users_custom_column', 'sd_modify_user_table_row', 10, 3 );
  * @since  1.0.0
  * @return array
  */
-function sd_get_sortable_columns() {
-	return array(
-		'registered' => array( 'registered', true )
-	);
+function sd_get_sortable_columns( $columns ) {
+	$columns['registered'] = __( 'Date Registered', 'users-by-date-registered' );
+
+	return $columns;	
 } // END sd_get_sortable_columns()
 add_filter( 'manage_users_sortable_columns', 'sd_get_sortable_columns' );
 
