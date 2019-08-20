@@ -5,18 +5,18 @@ Tags:              users, date, filter, admin, administration
 Requires PHP:      5.6
 Requires at least: 4.5
 Tested up to:      5.2.2
-Stable tag:        1.0.6
+Stable tag:        1.0.7
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
-Allows you to filter your users by date registered.
+Allows you to see the dates users registered on and filter the users by date.
 
 == Description ==
 
-This simple plugin allows you to filter your users by date registered and a new column is added to the users table displaying the date the user registered on your site.
+This simple plugin adds a new column to the users table displaying the date the user registered and allows you to filter the users by date.
 
 = Support =
-Use the WordPress.org forums for [community support](https://wordpress.org/support/plugin/users-by-date-registered). If you spot a bug, you can of course log it on [Github](https://github.com/seb86/Users-by-Date-Registered/issues) instead where I can act upon it more efficiently.
+Use the WordPress.org forums for [community support](https://wordpress.org/support/plugin/users-by-date-registered). If you spot a bug, you can of course log it on [Github](https://github.com/seb86/users-by-date-registered/issues) instead where I can act upon it more efficiently.
 
 = Please Leave a Review =
 Your ratings make a big difference. If you like Users by Date Registered, please consider spending a minute or two [leaving a review](https://wordpress.org/support/plugin/users-by-date-registered/reviews/?rate=5#postform) and tell me what you think about the plugin.
@@ -24,8 +24,8 @@ Your ratings make a big difference. If you like Users by Date Registered, please
 **More information**
 
 - Other [WordPress plugins](http://profiles.wordpress.org/sebd86/) by [Sébastien Dumont](https://sebastiendumont.com/)
-- Contact Sébastien on Twitter: [@sebd86](http://twitter.com/sebd86)
-- If you're a developer yourself, follow or contribute to the [Users by Date Registered plugin on GitHub](https://github.com/seb86/Users-by-Date-Registered)
+- Contact Sébastien on Twitter: [@sebd86](https://twitter.com/sebd86)
+- If you're a developer yourself, follow or contribute to the [Users by Date Registered plugin on GitHub](https://github.com/seb86/users-by-date-registered)
 
 == Installation ==
 
@@ -41,8 +41,18 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 == Changelog ==
 
+= v1.0.7 - 20th August 2019 =
+
+* Added: The date you have selected to filter the users by is shown on the side with the change made to the dropdown.
+* Changed: Dropdown is no longer selected once a date is set to allow you change again with the addition of showing the filter option in the bottom.
+* Fixed: Date registered column no longer overrides other columns to NOT be sortable. Spotted by [@benbranyon](https://github.com/benbranyon)
+* Tweaked: The dropdown now shows and works in the bottom of the users table. 🎊
+* Tweaked: Changed the use of `get_post_time()` with `mysql2date()` for a more accurate conversion of the date.
+* Tweaked: Date registered now shows X days ago time difference within a 7 day window instead of 1 day.
+
 = v1.0.6 - 18th July 2019 =
 
+* Checked: Compatibility with WordPress 5.2
 * Fixed: `$val` is returned for default if column is not registered.
 
 = v1.0.5 - 16th February 2019 = 

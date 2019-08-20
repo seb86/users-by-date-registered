@@ -1,8 +1,8 @@
 {
   "title": "Users by Date Registered",
   "name": "users-by-date-registered",
-  "description": "Allows you to filter your registered users by the date they registered.",
-  "version": "1.0.6",
+  "description": "Allows you to see the dates users registered and filter the users by date.",
+  "version": "1.0.7",
   "private": false,
   "contributors": [
     "sebd86"
@@ -13,9 +13,9 @@
   "main": "Gruntfile.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/seb86/Users-by-Date-Registered"
+    "url": "https://github.com/seb86/users-by-date-registered"
   },
-  "bugs": "https://github.com/seb86/Users-by-Date-Registered/issues",
+  "bugs": "https://github.com/seb86/users-by-date-registered/issues",
   "requires_php": "5.6",
   "requires": "4.5",
   "tested_up_to": "5.2.2",
